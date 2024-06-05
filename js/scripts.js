@@ -25,7 +25,7 @@ pokemonRepository.getAll().forEach(function(pokemon) {
         document.write(" - WOWZA! That's a Biggie!")
     }
     document.write("</p>")
- })()
+ })
 
 function dividing(dividend, divisor) {
     if (divisor === 0) {
