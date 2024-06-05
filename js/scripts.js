@@ -17,15 +17,15 @@ let pokemonRepository = (function () {
       add: add,
       getAll: getAll
     };
-  })();
+  })()
 
-pokemonRepository.getAll.forEach(function(pokemon) {
+pokemonRepository.getAll().forEach(function(pokemon) {
     document.write("<p>" + pokemon.name + " (height: " + pokemon.height + ")");
     if (pokemon.height > 0.6) {
         document.write(" - WOWZA! That's a Biggie!")
     }
     document.write("</p>")
- })();
+ })()
 
 function dividing(dividend, divisor) {
     if (divisor === 0) {
