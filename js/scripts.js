@@ -1,20 +1,31 @@
-let pokemonList = [
-    {name: 'Weedle', height: 0.3, types: ['bug', 'poison']},
-    {name: 'Pidgey', height: 0.3, types: ['flying', 'normal']}, 
-    {name: 'Bellsprout', height: 0.7, types: ['grass', 'poison']}
- ]
+let pokemonRepository = (function () {
+    let pokemonList = [
+        {name: 'Weedle', height: 0.3, types: ['bug', 'poison']},
+        {name: 'Pidgey', height: 0.3, types: ['flying', 'normal']}, 
+        {name: 'Bellsprout', height: 0.7, types: ['grass', 'poison']}
+    ];
+  
+    function add(pokemon) {
+      pokemonList.push(pokemon);
+    }
+  
+    function getAll() {
+      return pokemonList;
+    }
+  
+    return {
+      add: add,
+      getAll: getAll
+    };
+  })();
 
-function printArrayDetails(array) {
- for (let i = 0; i < array.length; i++) {
-    document.write("<p>" + pokemonList[i].name + " (height: " + pokemonList[i].height + ")");
-    if (pokemonList[i].height > 0.6) {
+pokemonRepository.getAll.forEach(function(pokemon) {
+    document.write("<p>" + pokemon.name + " (height: " + pokemon.height + ")");
+    if (pokemon.height > 0.6) {
         document.write(" - WOWZA! That's a Biggie!")
     }
     document.write("</p>")
- }
-}
-
-printArrayDetails(pokemonList);
+ })();
 
 function dividing(dividend, divisor) {
     if (divisor === 0) {
