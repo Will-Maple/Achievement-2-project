@@ -12,19 +12,37 @@ let pokemonRepository = (function () {
     function getAll() {
       return pokemonList;
     }
-  
+
+    function showDetails (pokemon) {
+      console.log(pokemon);
+    }
+
+    function addListItem(pokemon) {
+        let pokemonButtons = document.querySelector('.pokemon-list');
+        let listItem = document.createElement('li');
+        let button = document.createElement('button');
+        button.innerText = pokemon.name;
+        button.classList.add('button-main');
+        button.addEventListener('click', function(event) {
+          showDetails(pokemon);
+        });
+        listItem.appendChild(button);
+        pokemonButtons.appendChild(listItem);
+    }
+
     return {
       add: add,
-      getAll: getAll
+      getAll: getAll,
+      showDetails: showDetails,
+      addListItem: addListItem
     };
   })()
 
 pokemonRepository.getAll().forEach(function(pokemon) {
-    document.write("<p>" + pokemon.name + " (height: " + pokemon.height + ")");
-    if (pokemon.height > 0.6) {
+  pokemonRepository.addListItem(pokemon)
+    /*if (pokemon.height > 0.6) {
         document.write(" - WOWZA! That's a Biggie!")
-    }
-    document.write("</p>")
+    }*/
  })
 
 function dividing(dividend, divisor) {
