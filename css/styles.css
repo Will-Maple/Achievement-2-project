@@ -37,4 +37,8 @@
     margin-bottom: 10px;
   }
 
+.button-main:hover, .button-main:focus {
+    cursor: pointer;
+}
+
 
