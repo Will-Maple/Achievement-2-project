@@ -7,6 +7,11 @@
     box-sizing: border-box;
   }
 
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
 .main-box {
     height: 100vh;
     width: 100%;
@@ -15,10 +20,12 @@
     background-color: var(--background-color);
     text-align: center;
     border: 1px solid black;
+    border-top: 0px;
 }
 
 .pokemon-list {
     list-style-type: none;
+    padding: 0px
 }
 
 .title {
