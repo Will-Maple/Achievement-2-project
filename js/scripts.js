@@ -1,9 +1,6 @@
 let pokemonRepository = (function () {
-    let pokemonList = [
-        {name: 'Weedle', height: 0.3, types: ['bug', 'poison']},
-        {name: 'Pidgey', height: 0.3, types: ['flying', 'normal']}, 
-        {name: 'Bellsprout', height: 0.7, types: ['grass', 'poison']}
-    ];
+    let pokemonList = [];
+    let apiURL = 'https://pokeapi.co/api/v2/pokemon/?limit=150'
   
     function add(pokemon) {
       pokemonList.push(pokemon);
@@ -13,8 +10,10 @@ let pokemonRepository = (function () {
       return pokemonList;
     }
 
-    function showDetails (pokemon) {
-      console.log(pokemon);
+    function showDetails(pokemon) {
+      loadDetails(pokemon).then(function () {
+        console.log(pokemon);
+      });
     }
 
     function addListItem(pokemon) {
@@ -30,20 +29,50 @@ let pokemonRepository = (function () {
         pokemonButtons.appendChild(listItem);
     }
 
+    function loadList() {
+        return fetch(apiURL).then(function (response) {
+        return response.json();
+    }).then(function (json) {
+        json.results.forEach(function (item) {
+        let pokemon = {
+          name: item.name,
+          detailsUrl: item.url
+      };
+        add(pokemon);
+      });
+    }).catch(function (e) {
+      console.error(e);
+    })
+  }
+
+    function loadDetails(item) {
+      let url = item.detailsUrl;
+        return fetch(url).then(function (response) {
+        return response.json();
+      }).then(function (details) {
+        item.imageUrl = details.sprites.front_default;
+        item.height = details.height;
+        item.types = details.types;
+      }).catch(function (e) {
+        console.error(e);
+    });
+  }
+
     return {
       add: add,
       getAll: getAll,
+      loadList: loadList,
+      loadDetails: loadDetails,
       showDetails: showDetails,
       addListItem: addListItem
     };
   })()
-
-pokemonRepository.getAll().forEach(function(pokemon) {
-  pokemonRepository.addListItem(pokemon)
-    /*if (pokemon.height > 0.6) {
-        document.write(" - WOWZA! That's a Biggie!")
-    }*/
- })
+  
+pokemonRepository.loadList().then(function() {
+  pokemonRepository.getAll().forEach(function(pokemon) {
+    pokemonRepository.addListItem(pokemon);
+  });
+});
 
 function dividing(dividend, divisor) {
     if (divisor === 0) {
