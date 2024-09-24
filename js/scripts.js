@@ -29,7 +29,23 @@ let pokemonRepository = (function () {
         pokemonButtons.appendChild(listItem);
     }
 
-    function loadList() {
+   async function loadList() {
+    try  {
+        const response = await fetch(apiURL);
+        const json = await response.json();
+        json.results.forEach((item) => {
+          let pokemon = {
+            name: item.name,
+            detailsUrl: item.url,
+          };
+          add(pokemon);
+        });
+      } catch (error) {
+          console.error(':( Error loading pokemon List :(', error);
+      }
+   }
+   
+   /* {
         return fetch(apiURL).then(function (response) {
         return response.json();
     }).then(function (json) {
@@ -43,7 +59,7 @@ let pokemonRepository = (function () {
     }).catch(function (e) {
       console.error(e);
     })
-  }
+  } */
 
     function loadDetails(item) {
       let url = item.detailsUrl;
