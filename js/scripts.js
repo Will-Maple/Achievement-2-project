@@ -11,20 +11,65 @@ let pokemonRepository = (function () {
     }
 
     function showDetails(pokemon) {
-      loadDetails(pokemon).then(function () {
-        console.log(pokemon);
+      let modalContainer = document.querySelector('#modal-container');
+      modalContainer.innerHTML = '';
+      modalContainer.classList.add('is-visible');
+      let modal = document.createElement('div');
+      modal.classList.add('modal');
+
+      let closeButtonElement = document.createElement('button');
+      closeButtonElement.classList.add('modal-close');
+      closeButtonElement.innerText = 'hide details';
+      closeButtonElement.addEventListener('click', hideDetails);
+
+      let titleElement = document.createElement('h1');
+      titleElement.innerText = pokemon.name;
+
+      let contentElement = document.createElement('p');
+      contentElement.innerText = 'Height = ' + pokemon.height + ' Type = ' + pokemon.types;
+
+      let imageElement = document.createElement('img');
+      imageElement.src = pokemon.imageUrl;
+
+      modal.appendChild(closeButtonElement);
+      modal.appendChild(titleElement);
+      modal.appendChild(contentElement);
+      modal.appendChild(imageElement);
+      modalContainer.appendChild(modal);
+      modal.classList.add('is-visible');
+
+      modalContainer.addEventListener('click', (e) => {
+        let target = e.target;
+        if (target === modalContainer) {
+          hideDetails();
+        }
       });
     }
+
+    function hideDetails() {
+      let modalContainer = document.querySelector('#modal-container');
+      modalContainer.classList.remove('is-visible');
+    }
+
+    window.addEventListener('keydown', (e) => {
+      let modalContainer = document.querySelector('#modal-container');
+      if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
+        hideDetails();  
+      }
+    });
 
     function addListItem(pokemon) {
         let pokemonButtons = document.querySelector('.pokemon-list');
         let listItem = document.createElement('li');
         let button = document.createElement('button');
+        /*let div = document.createElement('div');*/
         button.innerText = pokemon.name;
         button.classList.add('button-main');
+        /*div.id = 'modal-container';*/
         button.addEventListener('click', function(event) {
-          showDetails(pokemon);
+          loadDetails(pokemon).then(showDetails)
         });
+        /*button.appendChild(div);*/
         listItem.appendChild(button);
         pokemonButtons.appendChild(listItem);
     }
@@ -44,22 +89,6 @@ let pokemonRepository = (function () {
           console.error(':( Error loading pokemon List :(', error);
       }
    }
-   
-   /* {
-        return fetch(apiURL).then(function (response) {
-        return response.json();
-    }).then(function (json) {
-        json.results.forEach(function (item) {
-        let pokemon = {
-          name: item.name,
-          detailsUrl: item.url
-      };
-        add(pokemon);
-      });
-    }).catch(function (e) {
-      console.error(e);
-    })
-  } */
 
     function loadDetails(item) {
       let url = item.detailsUrl;
@@ -69,6 +98,7 @@ let pokemonRepository = (function () {
         item.imageUrl = details.sprites.front_default;
         item.height = details.height;
         item.types = details.types;
+        return item;
       }).catch(function (e) {
         console.error(e);
     });
@@ -90,7 +120,7 @@ pokemonRepository.loadList().then(function() {
   });
 });
 
-function dividing(dividend, divisor) {
+/* function dividing(dividend, divisor) {
     if (divisor === 0) {
         return "You're trying to divide by 0."
     }
@@ -98,4 +128,4 @@ function dividing(dividend, divisor) {
         let div = dividend / divisor;
         return div;
     }
-}
+} */
