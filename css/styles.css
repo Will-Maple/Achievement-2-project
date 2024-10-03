@@ -51,7 +51,7 @@ button.modal-close {
     background-color: #FFF7FF;
 }
 
-.button-main:hover, .button-main:focus, .button-modal-close:hover, .button-modal-close:focus {
+.button-main:hover, .button-main:focus, button.modal-close:hover, button.modal-close:focus {
     cursor: pointer;
 }
 
