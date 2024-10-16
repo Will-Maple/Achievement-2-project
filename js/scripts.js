@@ -19,6 +19,9 @@ let pokemonRepository = (function () {
 
       let closeButtonElement = document.createElement('button');
       closeButtonElement.classList.add('modal-close');
+      closeButtonElement.classList.add('btn');
+      closeButtonElement.classList.add('btn-secondary');
+      closeButtonElement.classList.add('btn-sm');
       closeButtonElement.innerText = 'hide details';
       closeButtonElement.addEventListener('click', hideDetails);
 
@@ -64,18 +67,16 @@ let pokemonRepository = (function () {
 
     function addListItem(pokemon) {
         let pokemonButtons = document.querySelector('.pokemon-list');
-        let listItem = document.createElement('li');
         let button = document.createElement('button');
-        /*let div = document.createElement('div');*/
         button.innerText = pokemon.name;
         button.classList.add('button-main');
-        /*div.id = 'modal-container';*/
+        button.classList.add('btn');
+        button.classList.add('btn-link');
+        
         button.addEventListener('click', function(event) {
           loadDetails(pokemon).then(showDetails)
         });
-        /*button.appendChild(div);*/
-        listItem.appendChild(button);
-        pokemonButtons.appendChild(listItem);
+        pokemonButtons.appendChild(button);
     }
 
    async function loadList() {
