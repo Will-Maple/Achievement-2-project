@@ -1,6 +1,10 @@
 :root {
     --primary-color: #AE00A8;
     --background-color: #FFF7FF;
+    --button-color: #f7eef4;
+    --text-button-color: #1081cf;
+    --hover-color: #f2e8ef;
+    --click-color: #e8eff2;
 }
 
 * {
@@ -10,6 +14,7 @@
 body {
     margin: 0px;
     padding: 0px;
+    background-color: black;
 }
 
 .main-box {
@@ -35,6 +40,8 @@ body {
 
 .btn-main {
     border: dashed var(--primary-color);
+    background-color: var(--button-color);
+    color: var(--text-button-color);
     text-decoration: none;
     text-align: center;
     width: 80%;
@@ -44,6 +51,15 @@ body {
     transition: opacity 0.2s;
     margin-bottom: 10px;
   }
+
+.btn-main:hover {
+    background-color: var(--hover-color);
+}
+
+.btn-main:focus, btn-main:active {
+    background-color: var(--click-color);
+}
+
 
 button.hidden {
     display: none;
