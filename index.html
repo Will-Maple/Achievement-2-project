@@ -10,20 +10,27 @@
 <body>
     <div class="main-box">
         <h1 class="title">Pokedex</h1>
-        <ul class="nav justify-content-center">
-            <li class="nav-item">
-              <a class="nav-link active" href="#">Pokedex</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="https://github.com/Will-Maple/PokemonJS">Github Project</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="https://github.com/Will-Maple">My Github</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="https://github.com/Will-Maple/Portfolio-Website">My website</a>
-            </li>
-          </ul>
+        <nav class="navbar navbar-toggleable-sm navbar-expand-sm navbar-light">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Pokedex</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/Will-Maple/PokemonJS">Github Project</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/Will-Maple">My Github</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/Will-Maple/Portfolio-Website">My website</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
         <div class="pokemon-list list-group"></div>
     </div>
     <button type="button" class="btn btn-main btn-link hidden" id="modal-btn" data-toggle="modal" data-target="#modal"></button>

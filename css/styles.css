@@ -59,3 +59,11 @@ button.modal-close {
 button.hidden {
     display: none;
 }
+
+button.navbar-toggler{
+    margin: auto;
+}
+
+#navbarNav {
+    text-align: center;
+}
