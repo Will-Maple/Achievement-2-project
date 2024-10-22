@@ -45,17 +45,6 @@ body {
     margin-bottom: 10px;
   }
 
-button.modal-close {
-    color: var(--primary-color);
-    font-size: medium;
-    text-decoration: none;
-    background-color: #FFF7FF;
-}
-
-.btn-main:hover, .btn-main:focus, button.modal-close:hover, button.modal-close:focus {
-    cursor: pointer;
-}
-
 button.hidden {
     display: none;
 }
