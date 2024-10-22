@@ -12,13 +12,13 @@ let pokemonRepository = (function () {
 
     function showDetails(pokemon) {
       let titleElement = document.querySelector('.modal-title')
-      let modalText1 = document.querySelector("#modal-text1")
-      let modalText2 = document.querySelector("#modal-text2")
-      let modalImg = document.querySelector("#modal-img")
-      let typesNames = pokemon.types.map(typesItem => typesItem.type.name).join(", ");
+      let modalText1 = document.querySelector('#modal-text1')
+      let modalText2 = document.querySelector('#modal-text2')
+      let modalImg = document.querySelector('#modal-img')
+      let typesNames = pokemon.types.map(typesItem => typesItem.type.name).join(', ');
       let height = 'Height = ' + pokemon.height;
       let types = 'Pokemon Types = ' + typesNames;
-      modalImg.classList.add("img-fluid");
+      modalImg.classList.add('img-fluid');
       modalImg.alt = 'Image of' + pokemon.name;
 
       titleElement.innerText = pokemon.name;
@@ -57,7 +57,7 @@ let pokemonRepository = (function () {
       }
    }
 
-    function loadDetails(item) {
+    async function loadDetails(item) {
       let url = item.detailsUrl;
         return fetch(url).then(function (response) {
         return response.json();
