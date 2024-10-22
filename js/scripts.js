@@ -18,6 +18,8 @@ let pokemonRepository = (function () {
       let typesNames = pokemon.types.map(typesItem => typesItem.type.name).join(", ");
       let height = 'Height = ' + pokemon.height;
       let types = 'Pokemon Types = ' + typesNames;
+      modalImg.classList.add("img-fluid");
+      modalImg.alt = 'Image of' + pokemon.name;
 
       titleElement.innerText = pokemon.name;
       modalText1.innerHTML = height;
