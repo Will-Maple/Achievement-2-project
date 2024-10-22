@@ -1,8 +1,10 @@
 :root {
     --primary-color: #AE00A8;
     --background-color: #FFF7FF;
+    --text-nav-head-color: black;
+    --text-nav-links-color: #294c66;
     --button-color: #f7eef4;
-    --text-button-color: #1081cf;
+    --text-button-color: #0b63a1;
     --hover-color: #f2e8ef;
     --click-color: #e8eff2;
 }
@@ -38,6 +40,14 @@ body {
     margin: auto;
 }
 
+.navbar-light .nav-item .nav-link {
+    color: var(--text-nav-links-color);
+}
+
+#nav-active {
+    color: var(--text-nav-head-color);
+}
+
 .btn-main {
     border: dashed var(--primary-color);
     background-color: var(--button-color);
@@ -60,15 +70,10 @@ body {
     background-color: var(--click-color);
 }
 
-
 button.hidden {
     display: none;
 }
 
 button.navbar-toggler{
     margin: auto;
-}
-
-#navbarNav {
-    text-align: center;
 }
