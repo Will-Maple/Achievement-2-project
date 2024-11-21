@@ -1,4 +1,13 @@
-This is app created as part of the Career Foundry Full-Stack Immersion course. I used it to learn JavaScript, JQuery, Bootstrap, Ajax and deepen my knowledge of HTML and CSS. The app pulls data from the pokeapi to create buttons that link to more info about the pokemon using bootstrap and custom styling for navbar and modal displays.
+This is app created as part of the Career Foundry Full-Stack Immersion course. I used it to learn or deepen my knowledge of...
+{
+    JavaScript,
+    JQuery,
+    Bootstrap,
+    Ajax,
+    HTML,
+    CSS
+ } 
+The app pulls data from the pokeapi to create buttons that link to more info about the pokemon using bootstrap and custom styling for navbar and modal displays.
 
 The project is available on Github and has a Github pages display here (https://will-maple.github.io/PokemonJS/).
 
